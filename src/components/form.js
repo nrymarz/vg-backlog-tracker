@@ -13,13 +13,13 @@ export default class Form extends Component {
 
     handleSubmit = event =>{
         event.preventDefault()
-        //this.props.dosomething
+        this.props.fetchGames()
     }
 
     render(){
         return(
             <form onSubmit={this.handleSubmit}>
-                <input type="text" value={this.state.text} name="search" onChange={this.handleChange}/>
+                <input type="text" value={this.state.text} name="search" onChange={this.handleChange} placeholder="Search by title"/>
                 <input type="submit" value="Search"/>
             </form>
         )
