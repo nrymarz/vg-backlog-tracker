@@ -8,6 +8,7 @@ import {createStore, applyMiddleware} from 'redux'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import videoGameList from './reducers/videogamelist'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const store=createStore(videoGameList,composeWithDevTools(applyMiddleware(thunk)))
 

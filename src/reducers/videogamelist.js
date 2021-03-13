@@ -1,6 +1,7 @@
 const videoGameList = (state={
     games: [],
-    loading: false
+    loading: false,
+    hasSearched:false
 },action) =>{
     switch(action.type){
         case "START_ADDING_GAMES":
@@ -9,7 +10,8 @@ const videoGameList = (state={
             return {
                 ...state,
                 games: action.games,
-                loading: false
+                loading: false,
+                hasSearched: true
             }
         default:
             return state
