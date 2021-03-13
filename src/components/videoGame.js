@@ -8,12 +8,12 @@ const VideoGame = ({game}) => {
     }
 
     return(
-        <Col xs={4} md={3} xl={2}>
+        <Col sm={4} lg={3} xl={2}>
             <Card border="dark" bg="primary" text="light" className="mt-3">
                 <Card.Img src={game.background_image} alt={game.name} />
                 <Card.Body>
                     <Card.Title>{game.name}</Card.Title>
-                    <Card.Text> Released:{game.released} </Card.Text>
+                    <Card.Text> Released: {game.released} </Card.Text>
                     <Card.Text> {renderPlatforms()} </Card.Text>
                 </Card.Body>
             </Card>
