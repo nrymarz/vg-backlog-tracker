@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 
 class VideoGames extends Component {
     renderGames(){
-        if(this.props.loading) return <p><Spinner animation="border" variant="primary"/> Finding Games...</p>
+        if(this.props.loading) return <> <Spinner animation="border" variant="primary"/> Finding Games... </>
         else if(this.props.games.length===0 && this.props.hasSearched) return <h4>No games found.</h4>
         return(
             <CardDeck >

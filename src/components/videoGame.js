@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col'
 
 const VideoGame = ({game}) => {
     function renderPlatforms(){
-        if(game.platforms) return <p>Platforms: {game.platforms.map(pf => pf.platform.name).join(', ')} </p>
+        if(game.platforms) return <Card.Text> Platforms: {game.platforms.map(pf => pf.platform.name).join(', ')} </Card.Text>
     }
 
     return(
@@ -14,7 +14,7 @@ const VideoGame = ({game}) => {
                 <Card.Body>
                     <Card.Title>{game.name}</Card.Title>
                     <Card.Text> Released: {game.released} </Card.Text>
-                    <Card.Text> {renderPlatforms()} </Card.Text>
+                    {renderPlatforms()}
                 </Card.Body>
             </Card>
         </Col>
