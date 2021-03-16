@@ -1,4 +1,5 @@
-add infinite scrolling
+add infinite scrolling - done 
 add onHover and onClick events to cards
 add card backs
+filter games by category, platform
 add buttons to card backs for adding games to usergameslist

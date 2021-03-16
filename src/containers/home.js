@@ -17,7 +17,7 @@ class Home extends Component {
                     next={() => this.props.fetchMoreGames(this.props.next_page)}
                     hasMore={this.props.next_page}
                     loader={<h4>Loading...</h4>}
-                >
+                    >
                     <VideoGames games={this.props.games} loading={this.props.loading} hasSearched={this.props.hasSearched}/>
                 </InfiniteScroll>
             </>

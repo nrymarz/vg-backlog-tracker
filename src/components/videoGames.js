@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import VideoGame from './videoGame'
 import Spinner from 'react-bootstrap/Spinner'
-import CardDeck from 'react-bootstrap/CardDeck'
+import CardGroup from 'react-bootstrap/CardGroup'
 import Container from 'react-bootstrap/Container'
 
 class VideoGames extends Component {
@@ -9,9 +9,9 @@ class VideoGames extends Component {
         if(this.props.loading) return <> <Spinner animation="border" variant="primary"/> Finding Games... </>
         else if(this.props.games.length===0 && this.props.hasSearched) return <h4>No games found.</h4>
         return(
-            <CardDeck >
+            <CardGroup>
                 {this.props.games.map(game => <VideoGame game={game} key={game.id}/>)}
-            </CardDeck>
+            </CardGroup>
         )
     }
 
