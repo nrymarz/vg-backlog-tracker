@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container'
 class VideoGames extends Component {
     renderGames(){
         if(this.props.loading) return <> <Spinner animation="border" variant="primary"/> Finding Games... </>
-        else if(this.props.games.length===0 && this.props.hasSearched) return <h4>No games found.</h4>
+        else if(this.props.games.length===0) return <h4>No games found.</h4>
         return(
             <CardGroup>
                 {this.props.games.map(game => <VideoGame game={game} key={game.id}/>)}

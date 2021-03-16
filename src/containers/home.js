@@ -14,7 +14,6 @@ class Home extends Component {
     render(){
         return(
             <>
-                <h1 className="ml-4">Search for Video Games</h1>
                 <SearchForm fetchGames={this.props.fetchGames}/>
                 <InfiniteScroll
                     dataLength={this.props.games.length}

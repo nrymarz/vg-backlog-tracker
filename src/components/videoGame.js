@@ -12,7 +12,7 @@ class VideoGame extends Component{
 
     handleMouseEnter = () =>{
         this.setState({
-            border: this.state.clicked ? 'dark' : 'info'
+            border: 'info'
         })
     }
 
@@ -43,6 +43,7 @@ class VideoGame extends Component{
         }
         return(
             <>
+                <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name} style={{height:"20rem"}}/>
                 <Card.Body>
                     <Card.Title>{game.name}</Card.Title>
                     <Card.Subtitle> Released: {game.released} </Card.Subtitle>
@@ -64,17 +65,16 @@ class VideoGame extends Component{
     render(){
         const game = this.props.game
         return(
-            <Col sm={6} lg={4} xl={3} >
+            <Col sm={6} lg={4} xl={3} className="mb-3">
                 <Card 
                     border={this.state.border}
                     bg={this.state.bg} 
                     text="light" 
-                    className="mt-3" 
+                    className="h-100" 
                     onMouseEnter={this.handleMouseEnter} 
                     onMouseLeave={this.handleMouseLeave} 
                     onClick={this.handleClick}
                     >
-                    <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name} />
                     {this.renderFace()}
                 </Card>
             </Col>
