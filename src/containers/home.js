@@ -14,8 +14,8 @@ class Home extends Component {
                 <SearchForm fetchGames={this.props.fetchGames}/>
                 <InfiniteScroll
                     dataLength={this.props.games.length}
-                    next={this.props.fetchMoreGames}
-                    hasMore={true}
+                    next={() => this.props.fetchMoreGames(this.props.next_page)}
+                    hasMore={this.props.next_page}
                     loader={<h4>Loading...</h4>}
                 >
                     <VideoGames games={this.props.games} loading={this.props.loading} hasSearched={this.props.hasSearched}/>
@@ -29,14 +29,15 @@ const mSTP = state =>{
     return{
         games: state.games,
         loading: state.loading,
-        hasSearched: state.hasSearched
+        hasSearched: state.hasSearched,
+        next_page: state.next_page
     }
 }
 
 const mDTP = dispatch =>{
     return {
         fetchGames: (params)=> dispatch(fetchGames(params)),
-        fetchMoreGames: () => dispatch(fetchMoreGames())
+        fetchMoreGames: (next_page) => dispatch(fetchMoreGames(next_page))
     }
 }
 

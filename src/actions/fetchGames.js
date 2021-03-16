@@ -7,16 +7,16 @@ const fetchGames = (params) => {
         dispatch({type: "START_ADDING_GAMES"})
         fetch(url + params.search + api_key)
             .then(res => res.json())
-            .then(json=> dispatch({type: "ADD_GAMES",games: json.results}))
+            .then(json=> dispatch({type: "ADD_GAMES",games: json.results, next_page: json.next}))
     }
 }
 
-const fetchMoreGames = () =>{
+const fetchMoreGames = (next_page) =>{
     return dispatch =>{
         dispatch({type: "LOADING_GAMES"})
-        fetch(url + api_key)
+        fetch(next_page)
             .then(res => res.json())
-            .then(json=> dispatch({type: "ADD_MORE_GAMES", games: json.results}))
+            .then(json=> dispatch({type: "ADD_MORE_GAMES", games: json.results, next_page: json.next}))
     }
 }
 
