@@ -13,10 +13,10 @@ const fetchGames = (params) => {
 
 const fetchMoreGames = () =>{
     return dispatch =>{
-        dispatch({type: "START_ADDING_GAMES"})
+        dispatch({type: "LOADING_GAMES"})
         fetch(url + api_key)
             .then(res => res.json())
-            .then(json=> dispatch({type: "ADD_GAMES",games: json.results}))
+            .then(json=> dispatch({type: "ADD_MORE_GAMES", games: json.results}))
     }
 }
 

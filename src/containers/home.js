@@ -35,8 +35,8 @@ const mSTP = state =>{
 
 const mDTP = dispatch =>{
     return {
-        fetchGames: (params)=>dispatch(fetchGames(params)),
-        fetchMoreGames: () =>dispatch(fetchMoreGames)
+        fetchGames: (params)=> dispatch(fetchGames(params)),
+        fetchMoreGames: () => dispatch(fetchMoreGames())
     }
 }
 
