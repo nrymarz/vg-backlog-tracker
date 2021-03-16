@@ -5,26 +5,27 @@ import Col from 'react-bootstrap/Col'
 
 class VideoGame extends Component{
     state={
+        border: 'dark',
         bg: 'primary',
         clicked: false
     }
 
     handleMouseEnter = () =>{
         this.setState({
-            bg: this.state.clicked ? 'dark' : 'info'
+            border: this.state.clicked ? 'dark' : 'info'
         })
     }
 
     handleMouseLeave = () =>{
         this.setState({
-            bg: this.state.clicked ? 'secondary' : 'primary'
+            border: this.state.clicked ? 'secondary' : 'primary'
         })
     }
 
     handleClick = () =>{
         this.setState({
             clicked: !this.state.clicked,
-            bg: !this.state.clicked ? 'dark' : 'info'
+            bg: this.state.clicked ? 'primary' : 'dark'
         })
     }
 
@@ -33,17 +34,26 @@ class VideoGame extends Component{
         if(this.state.clicked){
             return(
                 <Card.Body>
-                    <Button variant="secondary">Add to Backlog</Button>
+                    {this.renderRating()}
+                    <Card.Text>Average Review: {game.rating} / 5</Card.Text>
+                    {this.renderPlatforms()}
+                    <Button variant="light" text="dark">Add to Backlog</Button>
                 </Card.Body>
             )
         }
         return(
-            <Card.Body>
-                <Card.Title>{game.name}</Card.Title>
-                <Card.Text> Released: {game.released} </Card.Text>
-                {this.renderPlatforms()}
-            </Card.Body>
+            <>
+                <Card.Body>
+                    <Card.Title>{game.name}</Card.Title>
+                    <Card.Subtitle> Released: {game.released} </Card.Subtitle>
+                    <Card.Text>Genres: {game.genres.map(genre =>genre.name).join(', ')}</Card.Text>
+                </Card.Body>
+            </>
         )
+    }
+
+    renderRating(){
+        if(this.props.game.esrb_rating) return <Card.Text>Rated: {this.props.game.esrb_rating.name}</Card.Text>
     }
 
     renderPlatforms(){
@@ -54,12 +64,20 @@ class VideoGame extends Component{
     render(){
         const game = this.props.game
         return(
-        <Col sm={4} lg={3} xl={2}>
-            <Card border="dark" bg={this.state.bg} text="light" className="mt-3" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave} onClick={this.handleClick}>
-                <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name} />
-                {this.renderFace()}
-            </Card>
-        </Col>
+            <Col sm={6} lg={4} xl={3} >
+                <Card 
+                    border={this.state.border}
+                    bg={this.state.bg} 
+                    text="light" 
+                    className="mt-3" 
+                    onMouseEnter={this.handleMouseEnter} 
+                    onMouseLeave={this.handleMouseLeave} 
+                    onClick={this.handleClick}
+                    >
+                    <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name} />
+                    {this.renderFace()}
+                </Card>
+            </Col>
         )
     }   
 }

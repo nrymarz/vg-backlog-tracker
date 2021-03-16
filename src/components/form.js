@@ -26,7 +26,7 @@ export default class SearchForm extends Component {
     render(){
         return(
             <Form onSubmit={this.handleSubmit}>
-                <Form.Row>
+                <Form.Row className="pl-4">
                     <Col>
                         <Form.Control type="text" value={this.state.text} name="search" onChange={this.handleChange} placeholder="Search by title"/>
                     </Col>

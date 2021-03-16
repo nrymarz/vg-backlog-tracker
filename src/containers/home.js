@@ -7,18 +7,21 @@ import VideoGames from '../components/videoGames'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 class Home extends Component {
+    componentDidMount(){
+        this.props.fetchGames({search: ''})
+    }
+
     render(){
         return(
             <>
-                <h1>Search for Video Games</h1>
+                <h1 className="ml-4">Search for Video Games</h1>
                 <SearchForm fetchGames={this.props.fetchGames}/>
                 <InfiniteScroll
                     dataLength={this.props.games.length}
                     next={() => this.props.fetchMoreGames(this.props.next_page)}
                     hasMore={this.props.next_page}
-                    loader={<h4>Loading...</h4>}
                     >
-                    <VideoGames games={this.props.games} loading={this.props.loading} hasSearched={this.props.hasSearched}/>
+                    <VideoGames games={this.props.games} loading={this.props.loading}/>
                 </InfiniteScroll>
             </>
         )
@@ -29,7 +32,6 @@ const mSTP = state =>{
     return{
         games: state.games,
         loading: state.loading,
-        hasSearched: state.hasSearched,
         next_page: state.next_page
     }
 }

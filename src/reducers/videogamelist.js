@@ -1,7 +1,6 @@
 const videoGameList = (state={
     games: [],
     loading: false,
-    hasSearched:false,
     next_page: ''
     },action) =>{
     switch(action.type){
@@ -9,10 +8,8 @@ const videoGameList = (state={
             return {...state, loading:true}
         case "ADD_GAMES":
             return {
-                ...state,
                 games: action.games,
                 loading: false,
-                hasSearched: true,
                 next_page: action.next_page
             }
         case "ADD_MORE_GAMES":
