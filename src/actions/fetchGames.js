@@ -11,4 +11,13 @@ const fetchGames = (params) => {
     }
 }
 
-export default fetchGames
+const fetchMoreGames = () =>{
+    return dispatch =>{
+        dispatch({type: "START_ADDING_GAMES"})
+        fetch(url + api_key)
+            .then(res => res.json())
+            .then(json=> dispatch({type: "ADD_GAMES",games: json.results}))
+    }
+}
+
+export {fetchGames, fetchMoreGames}
