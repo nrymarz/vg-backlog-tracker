@@ -5,27 +5,20 @@ import Col from 'react-bootstrap/Col'
 
 class VideoGame extends Component{
     state={
-        border: 'dark',
-        bg: 'primary',
-        clicked: false
+        clicked: false,
     }
 
-    handleMouseEnter = () =>{
-        this.setState({
-            border: 'info'
-        })
-    }
+    targetRef = React.createRef();
+    height = null
 
-    handleMouseLeave = () =>{
-        this.setState({
-            border: this.state.clicked ? 'secondary' : 'primary'
-        })
-    }
+    componentDidMount(){
+        this.height = this.targetRef.current.offsetHeight
+      }
 
     handleClick = () =>{
+        this.height = this.targetRef.current.offsetHeight
         this.setState({
-            clicked: !this.state.clicked,
-            bg: this.state.clicked ? 'primary' : 'dark'
+            clicked: !this.state.clicked
         })
     }
 
@@ -33,7 +26,7 @@ class VideoGame extends Component{
         const game = this.props.game
         if(this.state.clicked){
             return(
-                <Card.Body className="d-inline-flex flex-column justify-content-center">
+                <Card.Body className="d-inline-flex flex-column justify-content-center" style={{height: this.height}}>
                     {this.renderRating()}
                     <Card.Text>Average Review: {game.rating} / 5</Card.Text>
                     {this.renderPlatforms()}
@@ -43,7 +36,7 @@ class VideoGame extends Component{
         }
         return(
             <>
-                <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name} style={{maxHeight:"16rem"}}/>
+                <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name} style={{maxHeight: "25rem"}}/>
                 <Card.Body>
                     <Card.Title>{game.name}</Card.Title>
                     <Card.Subtitle> Released: {game.released} </Card.Subtitle>
@@ -63,16 +56,11 @@ class VideoGame extends Component{
     }
 
     render(){
-        const game = this.props.game
         return(
-            <Col sm={6} lg={4} xl={3} className="mb-3" style={{height:"23rem"}}>
+            <Col sm={6} lg={4} xl={3} className="my-3" ref={this.targetRef}>
                 <Card 
-                    border={this.state.border}
-                    bg={this.state.bg} 
                     text="light"
                     className="h-100"  
-                    onMouseEnter={this.handleMouseEnter} 
-                    onMouseLeave={this.handleMouseLeave} 
                     onClick={this.handleClick}
                     >
                     {this.renderFace()}
