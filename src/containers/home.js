@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import SearchForm from '../components/form'
-//import VideoGamesList from './videoGameList'
-import {fetchGames, fetchMoreGames} from '../actions/fetchGames'
+import {fetchGames, fetchMoreGames, fetchGenres} from '../actions/fetchGames'
 import {connect} from 'react-redux'
 import VideoGames from '../components/videoGames'
 import InfiniteScroll from 'react-infinite-scroll-component'
@@ -9,12 +8,13 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 class Home extends Component {
     componentDidMount(){
         this.props.fetchGames({search: ''})
+        this.props.fetchGenres()
     }
 
     render(){
         return(
             <>
-                <SearchForm fetchGames={this.props.fetchGames}/>
+                <SearchForm fetchGames={this.props.fetchGames} genres={this.props.genres}/>
                 <InfiniteScroll
                     dataLength={this.props.games.length}
                     next={() => this.props.fetchMoreGames(this.props.next_page)}
@@ -29,6 +29,7 @@ class Home extends Component {
 
 const mSTP = state =>{
     return{
+        genres: state.genres,
         games: state.games,
         loading: state.loading,
         next_page: state.next_page
@@ -38,7 +39,8 @@ const mSTP = state =>{
 const mDTP = dispatch =>{
     return {
         fetchGames: (params)=> dispatch(fetchGames(params)),
-        fetchMoreGames: (next_page) => dispatch(fetchMoreGames(next_page))
+        fetchMoreGames: (next_page) => dispatch(fetchMoreGames(next_page)),
+        fetchGenres: () => dispatch(fetchGenres())
     }
 }
 

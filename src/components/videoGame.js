@@ -22,15 +22,19 @@ class VideoGame extends Component{
         })
     }
 
+    handleBtnClick = e =>{
+        e.stopPropagation()
+    }
+
     renderFace(){
         const game = this.props.game
         if(this.state.clicked){
             return(
-                <Card.Body className="d-inline-flex flex-column justify-content-center" style={{height: this.height}}>
+                <Card.Body className="d-inline-flex flex-column justify-content-center" style={{minHeight: this.height-2}}>
                     {this.renderRating()}
                     <Card.Text>Average Review: {game.rating} / 5</Card.Text>
                     {this.renderPlatforms()}
-                    <Button variant="secondary" className="mt-auto">Add to Backlog</Button>
+                    <Button variant="secondary" className="mt-auto" onClick={this.handleBtnClick}>Add to Backlog</Button>
                 </Card.Body>
             )
         }
@@ -60,7 +64,7 @@ class VideoGame extends Component{
             <Col sm={6} lg={4} xl={3} className="my-3" ref={this.targetRef}>
                 <Card 
                     text="light"
-                    className="h-100"  
+                    
                     onClick={this.handleClick}
                     >
                     {this.renderFace()}
