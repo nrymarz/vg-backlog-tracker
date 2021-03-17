@@ -21,7 +21,6 @@ const fetchGames = (params) => {
     let newUrl = url + params.search
     if(parseInt(params.platform) > 0) newUrl = newUrl.concat(`&platforms=${params.platform}`)
     if(parseInt(params.genre) > 0) newUrl = newUrl.concat(`&genres=${params.genre}`)
-    debugger
     return dispatch =>{
         dispatch({type: "START_ADDING_GAMES"})
         fetch(newUrl + api_key)

@@ -50,13 +50,13 @@ export default class SearchForm extends Component {
                     </Col>
                     <Col>
                         <Form.Control as="select" name="genre" onChange={this.handleSelectChange} value={this.state.genre}>
-                            <option value="0">Select a Genre</option>
+                            <option value="0">All Genres</option>
                             {this.renderGenreOptions()}
                         </Form.Control>
                     </Col>
                     <Col>
-                        <Form.Control as="select" name="platform" defaultValue="">
-                            <option value="">Select a Platform</option>
+                        <Form.Control as="select" name="platform" value={this.state.platform} onChange={this.handleSelectChange}>
+                            <option value="0">All Platforms</option>
                             {this.renderPlatformOptions()}
                         </Form.Control>
                     </Col>
