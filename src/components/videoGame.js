@@ -33,17 +33,17 @@ class VideoGame extends Component{
         const game = this.props.game
         if(this.state.clicked){
             return(
-                <Card.Body>
+                <Card.Body className="d-inline-flex flex-column justify-content-center">
                     {this.renderRating()}
                     <Card.Text>Average Review: {game.rating} / 5</Card.Text>
                     {this.renderPlatforms()}
-                    <Button variant="light" text="dark">Add to Backlog</Button>
+                    <Button variant="secondary" className="mt-auto">Add to Backlog</Button>
                 </Card.Body>
             )
         }
         return(
             <>
-                <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name} style={{height:"20rem"}}/>
+                <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name} style={{maxHeight:"16rem"}}/>
                 <Card.Body>
                     <Card.Title>{game.name}</Card.Title>
                     <Card.Subtitle> Released: {game.released} </Card.Subtitle>
@@ -65,12 +65,12 @@ class VideoGame extends Component{
     render(){
         const game = this.props.game
         return(
-            <Col sm={6} lg={4} xl={3} className="mb-3">
+            <Col sm={6} lg={4} xl={3} className="mb-3" style={{height:"23rem"}}>
                 <Card 
                     border={this.state.border}
                     bg={this.state.bg} 
-                    text="light" 
-                    className="h-100" 
+                    text="light"
+                    className="h-100"  
                     onMouseEnter={this.handleMouseEnter} 
                     onMouseLeave={this.handleMouseLeave} 
                     onClick={this.handleClick}
