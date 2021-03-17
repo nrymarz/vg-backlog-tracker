@@ -23,21 +23,31 @@ export default class SearchForm extends Component {
         )
     }
 
-    renderOptions = () =>{
+    renderGenreOptions = () =>{
         return this.props.genres.map(genre=> <option key={genre.id}>{genre.name}</option>)
+    }
+
+    renderPlatformOptions = () =>{
+        return this.props.platforms.map(platform => <option key={platform.id}>{platform.name}</option>)
     }
 
     render(){
         return(
             <Form onSubmit={this.handleSubmit}>
                 <Form.Row className="px-4 my-3">
-                    <Col>
+                    <Col xs={5}>
                         <Form.Control type="text" value={this.state.text} name="search" onChange={this.handleChange} placeholder="Search by title"/>
                     </Col>
                     <Col>
-                        <Form.Control as="select" id="genres">
-                            <option value="none" id="genre_select" selected disabled hidden>Select a Genre</option>
-                            {this.renderOptions()}
+                        <Form.Control as="select" id="genres" defaultValue="none">
+                            <option value="none" disabled hidden>Select a Genre</option>
+                            {this.renderGenreOptions()}
+                        </Form.Control>
+                    </Col>
+                    <Col>
+                        <Form.Control as="select" id="platforms" defaultValue="none">
+                            <option value="none" disabled hidden>Select a Platform</option>
+                            {this.renderPlatformOptions()}
                         </Form.Control>
                     </Col>
                     <Col>

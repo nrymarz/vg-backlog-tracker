@@ -1,10 +1,16 @@
 const videoGameList = (state={
+    platforms:[],
     genres:[],
     games: [],
     loading: false,
     next_page: ''
     },action) =>{
     switch(action.type){
+        case "ADD_PLATFORMS":
+            return{
+                ...state,
+                platforms: action.platforms
+            }
         case "ADD_GENRES":
             return{
                 ...state,

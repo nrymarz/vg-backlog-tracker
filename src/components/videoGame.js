@@ -40,7 +40,7 @@ class VideoGame extends Component{
         }
         return(
             <>
-                <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name} style={{maxHeight: "25rem"}}/>
+                <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name}/>
                 <Card.Body>
                     <Card.Title>{game.name}</Card.Title>
                     <Card.Subtitle> Released: {game.released} </Card.Subtitle>
@@ -61,7 +61,7 @@ class VideoGame extends Component{
 
     render(){
         return(
-            <Col sm={6} lg={4} xl={3} className="my-3" ref={this.targetRef}>
+            <Col sm={4} lg={3} xl={2} className="my-3" ref={this.targetRef}>
                 <Card 
                     text="light"
                     

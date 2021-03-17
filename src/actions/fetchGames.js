@@ -2,6 +2,14 @@ require('dotenv').config()
 const url = `https://api.rawg.io/api/games?page_size=24&search=`
 const api_key = `&key=${process.env.REACT_APP_API_KEY}`
 
+const fetchPlatforms = () =>{
+    return dispatch =>{
+        fetch('https://api.rawg.io/api/platforms?' + api_key)
+            .then(res => res.json())
+            .then(json => dispatch({type:"ADD_PLATFORMS", platforms: json.results}))
+    }
+}
+
 const fetchGenres = () =>{
     return dispatch =>{
         fetch('https://api.rawg.io/api/genres?'+ api_key)
@@ -27,4 +35,4 @@ const fetchMoreGames = (next_page) =>{
     }
 }
 
-export {fetchGames, fetchMoreGames,fetchGenres}
+export {fetchGames, fetchMoreGames,fetchGenres, fetchPlatforms}
