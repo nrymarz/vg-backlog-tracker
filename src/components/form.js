@@ -5,7 +5,9 @@ import Col from 'react-bootstrap/Col'
 
 export default class SearchForm extends Component {
     state = {
-        text:''
+        text:'',
+        platform: 0,
+        genre: 0
     }
 
     handleChange = event => {
@@ -18,17 +20,25 @@ export default class SearchForm extends Component {
         event.preventDefault()
         this.props.fetchGames(
             {
-            search: this.state.text
+            search: this.state.text,
+            platform: this.state.platform,
+            genre: this.state.genre
             }
         )
     }
 
+    handleSelectChange = event =>{
+        this.setState({
+            [event.target.name]: event.target.value
+        })
+    }
+
     renderGenreOptions = () =>{
-        return this.props.genres.map(genre=> <option key={genre.id}>{genre.name}</option>)
+        return this.props.genres.map(genre=> <option value= {genre.id} key={genre.id}>{genre.name}</option>)
     }
 
     renderPlatformOptions = () =>{
-        return this.props.platforms.map(platform => <option key={platform.id}>{platform.name}</option>)
+        return this.props.platforms.map(platform => <option value={platform.id} key={platform.id}>{platform.name}</option>)
     }
 
     render(){
@@ -39,14 +49,14 @@ export default class SearchForm extends Component {
                         <Form.Control type="text" value={this.state.text} name="search" onChange={this.handleChange} placeholder="Search by title"/>
                     </Col>
                     <Col>
-                        <Form.Control as="select" id="genres" defaultValue="none">
-                            <option value="none" disabled hidden>Select a Genre</option>
+                        <Form.Control as="select" name="genre" onChange={this.handleSelectChange} value={this.state.genre}>
+                            <option value="0">Select a Genre</option>
                             {this.renderGenreOptions()}
                         </Form.Control>
                     </Col>
                     <Col>
-                        <Form.Control as="select" id="platforms" defaultValue="none">
-                            <option value="none" disabled hidden>Select a Platform</option>
+                        <Form.Control as="select" name="platform" defaultValue="">
+                            <option value="">Select a Platform</option>
                             {this.renderPlatformOptions()}
                         </Form.Control>
                     </Col>

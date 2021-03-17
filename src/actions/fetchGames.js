@@ -18,9 +18,13 @@ const fetchGenres = () =>{
     }
 }
 const fetchGames = (params) => {
+    let newUrl = url + params.search
+    if(parseInt(params.platform) > 0) newUrl = newUrl.concat(`&platforms=${params.platform}`)
+    if(parseInt(params.genre) > 0) newUrl = newUrl.concat(`&genres=${params.genre}`)
+    debugger
     return dispatch =>{
         dispatch({type: "START_ADDING_GAMES"})
-        fetch(url + params.search + api_key)
+        fetch(newUrl + api_key)
             .then(res => res.json())
             .then(json=> dispatch({type: "ADD_GAMES",games: json.results, next_page: json.next}))
     }
@@ -28,7 +32,6 @@ const fetchGames = (params) => {
 
 const fetchMoreGames = (next_page) =>{
     return dispatch =>{
-        dispatch({type: "LOADING_GAMES"})
         fetch(next_page)
             .then(res => res.json())
             .then(json=> dispatch({type: "ADD_MORE_GAMES", games: json.results, next_page: json.next}))
