@@ -24,7 +24,7 @@ export default class SearchForm extends Component {
     }
 
     renderOptions = () =>{
-        return this.props.genres.map(genre=> <option>{genre.name}</option>)
+        return this.props.genres.map(genre=> <option key={genre.id}>{genre.name}</option>)
     }
 
     render(){
@@ -35,7 +35,8 @@ export default class SearchForm extends Component {
                         <Form.Control type="text" value={this.state.text} name="search" onChange={this.handleChange} placeholder="Search by title"/>
                     </Col>
                     <Col>
-                        <Form.Control as="select">
+                        <Form.Control as="select" id="genres">
+                            <option value="none" id="genre_select" selected disabled hidden>Select a Genre</option>
                             {this.renderOptions()}
                         </Form.Control>
                     </Col>
