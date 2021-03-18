@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 
+
 export default class SearchForm extends Component {
     state = {
         text:'',
@@ -45,7 +46,7 @@ export default class SearchForm extends Component {
         return(
             <Form onSubmit={this.handleSubmit}>
                 <Form.Row className="px-4 my-3">
-                    <Col xs={5}>
+                    <Col xs={6}>
                         <Form.Control type="text" value={this.state.text} name="search" onChange={this.handleChange} placeholder="Search by title"/>
                     </Col>
                     <Col>
@@ -60,8 +61,8 @@ export default class SearchForm extends Component {
                             {this.renderPlatformOptions()}
                         </Form.Control>
                     </Col>
-                    <Col>
-                        <Button variant="primary" type="submit">Search</Button>
+                    <Col xs={1}>
+                        <Button variant="primary" type="submit" className="w-100">Search</Button>
                     </Col>
                 </Form.Row>
             </Form>

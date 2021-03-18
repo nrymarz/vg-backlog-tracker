@@ -1,10 +1,13 @@
 add infinite scrolling - done 
 add onHover and onClick events to cards - done
 add card backs - done 
-filter games by category, platform
+filter games by category, platform - done
 add buttons to card backs for adding games to usergameslist - done
 Add NavBar
+    -styling
 Add Bg-color -done
 add new routes
 build user games list page
+Login page
+
 

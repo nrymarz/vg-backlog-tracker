@@ -10,14 +10,14 @@ class VideoGames extends Component {
         else if(this.props.games.length===0) return <h4>No games found.</h4>
         return(
             <CardGroup>
-                {this.props.games.map(game => <VideoGame game={game} key={game.id}/>)}
+                {this.props.games.map(game => <VideoGame game={game} key={game.id}/> )}
             </CardGroup>
         )
     }
 
     render(){
         return (
-            <Container fluid className="align-items-start">
+            <Container fluid>
                 {this.renderGames()}
             </Container>
         )
