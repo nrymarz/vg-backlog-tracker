@@ -62,7 +62,7 @@ export default class SearchForm extends Component {
                         </Form.Control>
                     </Col>
                     <Col xs={1}>
-                        <Button variant="primary" type="submit" className="w-100">Search</Button>
+                        <Button variant="primary" type="submit" block>Search</Button>
                     </Col>
                 </Form.Row>
             </Form>

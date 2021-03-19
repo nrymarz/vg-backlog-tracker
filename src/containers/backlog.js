@@ -13,7 +13,7 @@ class Backlog extends Component {
     }
 
     handleSelect = (event,game) =>{
-        let gameStatus = game.status
+        const gameStatus = game.status
         game.status = event
         this.setState(prevState =>{
             return{

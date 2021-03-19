@@ -9,14 +9,14 @@ class Login extends Component{
             <Container className="text-center">
                 <h2>Login</h2>
                 <Row className = 'd-flex justify-content-center'>
-                    <UserForm />
+                    <UserForm submit="Log In"/>
                 </Row>
                 <br></br>
                 <h2>Or</h2>
                 <br></br>
                 <h2>Sign Up</h2>
                 <Row className = 'd-flex justify-content-center'>
-                    <UserForm />
+                    <UserForm submit="Sign Up"/>
                 </Row>
             </Container>
         )
