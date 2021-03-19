@@ -5,7 +5,8 @@ import Col from 'react-bootstrap/Col'
 
 class VideoGame extends Component{
     state={
-        isFlipped: false
+        isFlipped: false,
+        btnDisabled: this.props.backlog.find(game => this.props.game.id === game.id)
     }
 
     targetRef = React.createRef();
@@ -21,6 +22,11 @@ class VideoGame extends Component{
 
     handleBtnClick = e =>{
         e.stopPropagation()
+        this.props.addToBacklog(this.props.game)
+        this.setState({
+            btnDisabled: true
+        })
+
     }
 
     renderFace(){
@@ -31,7 +37,7 @@ class VideoGame extends Component{
                     {this.renderRating()}
                     <Card.Text>Average Review: {game.rating} / 5</Card.Text>
                     {this.renderPlatforms()}
-                    <Button variant="secondary" className="mt-auto" onClick={this.handleBtnClick}>Add to Backlog</Button>
+                    <Button variant="secondary" className="mt-auto" onClick={this.handleBtnClick} disabled={this.state.btnDisabled}>Add to Backlog</Button>
                 </Card.Body>
             )
         }
@@ -52,8 +58,7 @@ class VideoGame extends Component{
     }
 
     renderPlatforms(){
-        const game = this.props.game
-        if(game.platforms) return <Card.Text> Platforms: {game.platforms.map(pf => pf.platform.name).join(', ')} </Card.Text>
+        if(this.props.game.platforms) return <Card.Text> Platforms: {this.props.game.platforms.map(pf => pf.platform.name).join(', ')} </Card.Text>
     }
 
     render(){

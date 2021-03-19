@@ -19,3 +19,7 @@ body {
 .card:hover{
     transform: scale(1.05);
 }
+
+.navbar{
+    background-color:rgba(170, 178, 252, 0.356) ;
+}
