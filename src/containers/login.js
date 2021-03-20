@@ -17,7 +17,7 @@ class Login extends Component{
         const configObj={
             method:"POST",
             headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({user:{username: username, password: password,backlog: backlog}})
+            body: JSON.stringify({user:{username: username, password: password}})
         }
         fetch('http://localhost:3000/login',configObj)
             .then(res => res.json())
@@ -25,10 +25,11 @@ class Login extends Component{
     }
 
     handleSignUp = (username,password) =>{
+        const backlog = JSON.stringify(this.props.backlog)
         const configObj={
             method: "POST",
             headers:{'Content-Type':'application/json'},
-            body: JSON.stringify({user:{username: username, password: password}})
+            body: JSON.stringify({user:{username: username, password: password, backlog: backlog}})
         }
         fetch('http://localhost:3000/users', configObj)
             .then(res => res.json())
