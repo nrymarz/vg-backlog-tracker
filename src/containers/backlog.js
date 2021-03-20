@@ -21,6 +21,7 @@ class Backlog extends Component {
                 [event]: [...prevState[event], game]
             }
         })
+        this.updateUserBacklog()
     }
 
     handleRemove = game =>{
@@ -28,8 +29,22 @@ class Backlog extends Component {
         this.setState( prevState =>{
             return{
                 [game.status]: prevState[game.status].filter(g => g.id !== game.id)
-            } 
+            }
         })
+        this.updateUserBacklog()
+    }
+
+    updateUserBacklog(){
+        let backlog = this.props.backlog
+        if(localStorage.getItem('jwt')){
+            backlog = JSON.stringify(backlog.map(game =>{return {name:game.name,status:game.status,id:game.id}}))
+            const configObj={
+                method: "POST",
+                headers:{'Content-Type':'application/json','Authorization':`Bearer ${localStorage.getItem('jwt')}`},
+                body: JSON.stringify({user:{backlog: backlog}})
+            }
+            fetch('http://localhost:3000/update',configObj)
+        }
     }
 
     render(){

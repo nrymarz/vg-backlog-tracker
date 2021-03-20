@@ -1,4 +1,5 @@
 const videoGameList = (state={
+    user:'',
     backlog:[],
     platforms:[],
     genres:[],
@@ -7,6 +8,16 @@ const videoGameList = (state={
     next_page: ''
     },action) =>{
     switch(action.type){
+        case "ADD_USER":
+            return{
+                ...state,
+                user: action.user
+            }
+        case "LOAD_GAMES_FROM_USER":
+            return{
+                ...state,
+                backlog: action.games
+            }
         case "ADD_TO_BACKLOG":
             return{
                 ...state,
@@ -16,6 +27,11 @@ const videoGameList = (state={
             return{
                 ...state,
                 backlog: state.backlog.filter(game => game.id !== action.game.id)
+            }
+        case "CLEAR_BACKLOG":
+            return{
+                ...state,
+                backlog:[]
             }
         case "ADD_PLATFORMS":
             return{
