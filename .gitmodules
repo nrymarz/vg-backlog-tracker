@@ -1,0 +1,3 @@
+[submodule "vg-backlog-tracker-api"]
+	path = vg-backlog-tracker-api
+	url = https://github.com/nrymarz/vg-backlog-tracker-api
