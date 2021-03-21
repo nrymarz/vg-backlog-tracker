@@ -13,7 +13,6 @@ class Login extends Component{
     }
 
     handleLogin = (username,password) =>{
-        const backlog = JSON.stringify(this.props.backlog)
         const configObj={
             method:"POST",
             headers:{'Content-Type':'application/json'},
