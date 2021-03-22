@@ -19,7 +19,7 @@ class App extends Component {
           'Authorization':`Bearer ${localStorage.getItem('jwt')}`
         }
       }
-     fetch('http://localhost:3000/profile',configObj)
+     fetch('https://vg-backlog-tracker-api.herokuapp.com/profile',configObj)
       .then(res => res.json())
       .then(json =>{
         this.props.addUser(json.user)

@@ -18,7 +18,7 @@ class Login extends Component{
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({user:{username: username, password: password}})
         }
-        fetch('http://localhost:3000/login',configObj)
+        fetch('https://vg-backlog-tracker-api.herokuapp.com/login',configObj)
             .then(res => res.json())
             .then(json => this.tryLogIn(json))
     }
@@ -30,7 +30,7 @@ class Login extends Component{
             headers:{'Content-Type':'application/json'},
             body: JSON.stringify({user:{username: username, password: password, backlog: backlog}})
         }
-        fetch('http://localhost:3000/users', configObj)
+        fetch('https://vg-backlog-tracker-api.herokuapp.com/users', configObj)
             .then(res => res.json())
             .then(json => this.tryLogIn(json))
             

@@ -43,7 +43,7 @@ class Backlog extends Component {
                 headers:{'Content-Type':'application/json','Authorization':`Bearer ${localStorage.getItem('jwt')}`},
                 body: JSON.stringify({user:{backlog: backlog}})
             }
-            fetch('http://localhost:3000/update',configObj)
+            fetch('https://vg-backlog-tracker-api.herokuapp.com/update',configObj)
         }
     }
 
