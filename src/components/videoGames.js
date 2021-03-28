@@ -10,7 +10,7 @@ class VideoGames extends Component {
         else if(this.props.games.length===0) return <h4>No games found.</h4>
         return(
             <CardGroup>
-                {this.props.games.map(game => <VideoGame game={game} key={game.id} addToBacklog={this.props.addToBacklog} backlog={this.props.backlog}/> )}
+                {this.props.games.map(game => <VideoGame game={game} key={game.id} addToBacklog={this.props.addToBacklog} backlog={this.props.backlog} isLoggedIn={this.props.isLoggedIn}/> )}
             </CardGroup>
         )
     }

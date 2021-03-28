@@ -29,6 +29,10 @@ class App extends Component {
     }
   }
 
+  isLoggedIn = () =>{
+    return this.props.user.length > 0
+  }
+
   logout = () =>{
     localStorage.clear()
     this.props.addUser('')
@@ -41,8 +45,8 @@ class App extends Component {
       <Router>
         <div className="App">
           <VGNavBar user={this.props.user}/>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/backlog' component={Backlog} />
+          <Route exact path='/' render={() => <Home isLoggedIn={this.isLoggedIn}/>} />
+          <Route exact path='/backlog' render={()=> <Backlog isLoggedIn={this.isLoggedIn} />} />
           <Route exact path='/login' component={Login} />
           <Route exact path='/logout' render={this.logout} />
         </div>

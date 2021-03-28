@@ -22,7 +22,7 @@ class Home extends Component {
                     next={() => this.props.fetchMoreGames(this.props.next_page)}
                     hasMore={this.props.next_page}
                     >
-                    <VideoGames games={this.props.games} loading={this.props.loading} addToBacklog={this.props.addToBacklog} backlog={this.props.backlog}/>
+                    <VideoGames games={this.props.games} loading={this.props.loading} addToBacklog={this.props.addToBacklog} backlog={this.props.backlog} isLoggedIn={this.props.isLoggedIn}/>
                 </InfiniteScroll>
             </>
         )

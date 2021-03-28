@@ -26,7 +26,7 @@ class VideoGame extends Component{
         this.setState({
             btnDisabled: true
         })
-        if(localStorage.getItem('jwt')){
+        if(this.props.isLoggedIn){
             this.props.game.status = "NOT_STARTED"
             let backlog = [...this.props.backlog,this.props.game]
             backlog = JSON.stringify(backlog.map(game =>{return {name:game.name,status:game.status,id:game.id}}))
