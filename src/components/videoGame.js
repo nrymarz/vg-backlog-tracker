@@ -26,24 +26,6 @@ class VideoGame extends Component{
             btnDisabled: true
         })
     }
-    // handleBtnClick = e =>{
-    //     e.stopPropagation()
-    //     this.props.addToBacklog(this.props.game)
-    //     this.setState({
-    //         btnDisabled: true
-    //     })
-    //     if(this.props.isLoggedIn){
-    //         this.props.game.status = "NOT_STARTED"
-    //         let backlog = [...this.props.backlog,this.props.game]
-    //         backlog = JSON.stringify(backlog.map(game =>{return {name:game.name,status:game.status,id:game.id}}))
-    //         const configObj={
-    //             method: "POST",
-    //             headers:{'Content-Type':'application/json','Authorization':`Bearer ${localStorage.getItem('jwt')}`},
-    //             body: JSON.stringify({user:{backlog: backlog}})
-    //         }
-    //         fetch('http://localhost:3000/update',configObj)
-    //     }
-    // }
 
     renderFace(){
         const game = this.props.game

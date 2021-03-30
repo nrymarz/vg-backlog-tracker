@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 
 class VideoGames extends Component {
     addToBacklog = (game) =>{
-        this.props.addToBacklog(this.props.game)
+        this.props.addToBacklog(game)
         if(this.props.isLoggedIn()){
             game.status = "NOT_STARTED"
             let backlog = [...this.props.backlog, game]
@@ -24,7 +24,7 @@ class VideoGames extends Component {
         else if(this.props.games.length===0) return <h4>No games found.</h4>
         return(
             <CardGroup>
-                {this.props.games.map(game => <VideoGame game={game} key={game.id} addToBacklog={this.addToBacklog} backlog={this.props.backlog} isLoggedIn={this.props.isLoggedIn}/> )}
+                {this.props.games.map(game => <VideoGame game={game} key={game.id} addToBacklog={this.addToBacklog} backlog={this.props.backlog}/> )}
             </CardGroup>
         )
     }
