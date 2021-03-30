@@ -3,7 +3,7 @@ import SearchForm from '../components/form'
 import {fetchGames, fetchMoreGames, fetchGenres, fetchPlatforms} from '../actions/fetchGames'
 import {addToBacklog} from '../actions/backlogActions'
 import {connect} from 'react-redux'
-import VideoGames from '../components/videoGames'
+import VideoGames from './videoGames'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 class Home extends Component {
