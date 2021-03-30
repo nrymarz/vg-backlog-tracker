@@ -39,6 +39,15 @@ class App extends Component {
     this.props.clearBacklog()
     return <Redirect to='/'/>
   }
+
+  login = () => {
+    if(this.isLoggedIn()){
+      return <Redirect to='/'/>
+    }
+    else {
+      return <Login/>
+    }
+  }
   
   render(){
     return(
@@ -47,7 +56,7 @@ class App extends Component {
           <VGNavBar user={this.props.user}/>
           <Route exact path='/' render={() => <Home isLoggedIn={this.isLoggedIn}/>} />
           <Route exact path='/backlog' render={()=> <Backlog isLoggedIn={this.isLoggedIn} />} />
-          <Route exact path='/login' component={Login} />
+          <Route exact path='/login' render={this.login} />
           <Route exact path='/logout' render={this.logout} />
         </div>
       </Router>
