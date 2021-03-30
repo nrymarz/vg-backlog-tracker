@@ -4,9 +4,10 @@ import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
 class VideoGame extends Component{
+    
     state={
         isFlipped: false,
-        btnDisabled: this.props.backlog.find(game => this.props.game.id === game.id)
+        btnDisabled: this.props.btnDisabled
     }
 
     targetRef = React.createRef();
@@ -27,18 +28,20 @@ class VideoGame extends Component{
         })
     }
 
+    renderBack(){
+        const {game} = this.props
+        return(
+            <Card.Body className="d-inline-flex flex-column justify-content-center"  style={{minHeight: this.height-2}}>
+                {this.renderRating()}
+                <Card.Text>Average Review: {game.rating} / 5</Card.Text>
+                {this.renderPlatforms()}
+                <Button variant="secondary" className="mt-auto" onClick={this.handleBtnClick} disabled={this.state.btnDisabled}>Add to Backlog</Button>
+            </Card.Body>
+        )
+    }
+
     renderFace(){
-        const game = this.props.game
-        if(this.state.isFlipped){
-            return(
-                <Card.Body className="d-inline-flex flex-column justify-content-center"  style={{minHeight: this.height-2}}>
-                    {this.renderRating()}
-                    <Card.Text>Average Review: {game.rating} / 5</Card.Text>
-                    {this.renderPlatforms()}
-                    <Button variant="secondary" className="mt-auto" onClick={this.handleBtnClick} disabled={this.state.btnDisabled}>Add to Backlog</Button>
-                </Card.Body>
-            )
-        }
+        const {game} = this.props
         return(
             <>
                 <Card.Img src={game.background_image || './unavailable-image.jpg'} alt={game.name} style={{maxHeight:'25rem'}}/>
@@ -67,7 +70,7 @@ class VideoGame extends Component{
                     onClick={this.handleClick}
                     className= "h-100"
                     >
-                    {this.renderFace()}
+                    {this.state.isFlipped ? this.renderBack() : this.renderFace()}
                 </Card>
             </Col>
         )
