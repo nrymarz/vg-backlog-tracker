@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container'
 class VideoGames extends Component {
     addToBacklog = (game) =>{
         this.props.addToBacklog(this.props.game)
-        if(this.props.isLoggedIn){
+        if(this.props.isLoggedIn()){
             game.status = "NOT_STARTED"
             let backlog = [...this.props.backlog, game]
             backlog = JSON.stringify(backlog.map(game =>{return {name:game.name,status:game.status,id:game.id}}))

@@ -36,7 +36,7 @@ class Backlog extends Component {
     }
 
     updateUserBacklog(backlog){
-        if(this.props.isLoggedIn){
+        if(this.props.isLoggedIn()){
             backlog = JSON.stringify(backlog.map(game =>{return {name:game.name,status:game.status,id:game.id}}))
             const configObj={
                 method: "POST",
