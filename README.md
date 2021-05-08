@@ -10,6 +10,7 @@ This app was made with React and Redux for the frontend and Ruby on Rails for th
 
 ## Check Out The Live Version
 https://guarded-temple-25512.herokuapp.com/
+
 Note: signing up or logging in may take a while because the backend is hosted as a seperate heroku application.
 
 
