@@ -13,7 +13,7 @@ export default function VGNavBar({user}){
     }
     return(
         <Navbar variant='dark'>
-            <Navbar.Brand>Video-Game Backlog Tracker</Navbar.Brand>
+            <Navbar.Brand>VG Backlog Tracker</Navbar.Brand>
             <Nav defaultActiveKey="/">
                 <Nav.Link as={Link} to="/">Search</Nav.Link>
                 <Nav.Link as={Link} to="/backlog">Backlog</Nav.Link>
