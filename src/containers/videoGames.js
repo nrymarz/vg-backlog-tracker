@@ -16,7 +16,7 @@ class VideoGames extends Component {
                 headers:{'Content-Type':'application/json','Authorization':`Bearer ${localStorage.getItem('jwt')}`},
                 body: JSON.stringify({user:{backlog: backlog}})
             }
-            fetch('http://localhost:3000/update',configObj)
+            fetch('https://vg-backlog-tracker-api.herokuapp.com/update',configObj)
         }
     }
     renderGames(){
@@ -24,7 +24,7 @@ class VideoGames extends Component {
         else if(this.props.games.length===0) return <h4>No games found.</h4>
         return(
             <CardGroup>
-                {this.props.games.map(game => <VideoGame game={game} key={game.id} btnDisabled={this.props.backlog.find(g => g.id === game.id)} /> )}
+                {this.props.games.map(game => <VideoGame game={game} key={game.id} btnDisabled={this.props.backlog.find(g => g.id === game.id)} addToBacklog={this.addToBacklog}/> )}
             </CardGroup>
         )
     }
