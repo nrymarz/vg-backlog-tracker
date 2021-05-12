@@ -1,71 +1,54 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from'react-bootstrap/Button'
 import Col from 'react-bootstrap/Col'
 
 
-export default class SearchForm extends Component {
-    state = {
-        text:'',
-        platform: 0,
-        genre: 0
-    }
+export default function SearchForm({genres, platforms, fetchGames}) {
 
-    handleChange = event => {
-        this.setState({
-            text: event.target.value
+    const [query, setQuery] = useState({search:'', platform:0, genre:0})
+
+    const handleChange = event => {
+        setQuery(prevState =>{
+            return {...prevState, [event.target.name]: event.target.value}
         })
     }
 
-    handleSubmit = event =>{
+    const handleSubmit = event =>{
         event.preventDefault()
-        this.props.fetchGames(
-            {
-            search: this.state.text,
-            platform: this.state.platform,
-            genre: this.state.genre
-            }
-        )
+        fetchGames(query)
     }
 
-    handleSelectChange = event =>{
-        this.setState({
-            [event.target.name]: event.target.value
-        })
+    const renderGenreOptions = () =>{
+        return genres.map(genre=> <option value= {genre.id} key={genre.id}>{genre.name}</option>)
     }
 
-    renderGenreOptions = () =>{
-        return this.props.genres.map(genre=> <option value= {genre.id} key={genre.id}>{genre.name}</option>)
+    const renderPlatformOptions = () =>{
+        return platforms.map(platform => <option value={platform.id} key={platform.id}>{platform.name}</option>)
     }
 
-    renderPlatformOptions = () =>{
-        return this.props.platforms.map(platform => <option value={platform.id} key={platform.id}>{platform.name}</option>)
-    }
-
-    render(){
-        return(
-            <Form onSubmit={this.handleSubmit}>
-                <Form.Row className="px-4 my-3">
-                    <Col xs={6}>
-                        <Form.Control type="text" value={this.state.text} name="search" onChange={this.handleChange} placeholder="Search by title"/>
-                    </Col>
-                    <Col>
-                        <Form.Control as="select" name="genre" onChange={this.handleSelectChange} value={this.state.genre}>
-                            <option value="0">All Genres</option>
-                            {this.renderGenreOptions()}
-                        </Form.Control>
-                    </Col>
-                    <Col>
-                        <Form.Control as="select" name="platform" value={this.state.platform} onChange={this.handleSelectChange}>
-                            <option value="0">All Platforms</option>
-                            {this.renderPlatformOptions()}
-                        </Form.Control>
-                    </Col>
-                    <Col xs={1}>
-                        <Button variant="primary" type="submit" block>Search</Button>
-                    </Col>
-                </Form.Row>
-            </Form>
-        )
-    }
+    return(
+        <Form onSubmit={handleSubmit}>
+            <Form.Row className="px-4 my-3">
+                <Col xs={6}>
+                    <Form.Control type="text" value={query.search} name="search" onChange={handleChange} placeholder="Search by title"/>
+                </Col>
+                <Col>
+                    <Form.Control as="select" name="genre" onChange={handleChange} value={query.genre}>
+                        <option value="0">All Genres</option>
+                        {renderGenreOptions()}
+                    </Form.Control>
+                </Col>
+                <Col>
+                    <Form.Control as="select" name="platform" value={query.platform} onChange={handleChange}>
+                        <option value="0">All Platforms</option>
+                        {renderPlatformOptions()}
+                    </Form.Control>
+                </Col>
+                <Col xs={1}>
+                    <Button variant="primary" type="submit" block>Search</Button>
+                </Col>
+            </Form.Row>
+        </Form>
+    )
 }
