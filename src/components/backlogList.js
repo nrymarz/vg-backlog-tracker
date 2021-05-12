@@ -7,7 +7,7 @@ export default function BacklogList({games, variant, handleSelect, handleRemove}
     function renderGames(){
         return games.map( game=> {
             return(
-                <ListGroup.Item variant={variant} >
+                <ListGroup.Item variant={variant} key={game.id} >
                     <h5>
                         {game.name}
                         <Dropdown as="span">

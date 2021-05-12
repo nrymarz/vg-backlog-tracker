@@ -66,14 +66,14 @@ class Login extends Component{
                 <br></br>
                 <h2>Login</h2>
                 <Row className = 'd-flex justify-content-center'>
-                    <UserForm submit="Log In" handleSubmit={this.handleLogin}/>
+                    <UserForm submit="Log In" handleLogin={this.handleLogin}/>
                 </Row>
                 <br></br>
                 <h2>Or</h2>
                 <br></br>
                 <h2>Sign Up</h2>
                 <Row className = 'd-flex justify-content-center'>
-                    <UserForm submit="Sign Up" handleSubmit={this.handleSignUp}/>
+                    <UserForm submit="Sign Up" handleLogin={this.handleSignUp}/>
                 </Row>
             </Container>
         )

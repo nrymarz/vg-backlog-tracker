@@ -3,7 +3,7 @@ import SearchForm from '../components/form'
 import {fetchGames, fetchMoreGames, fetchGenres, fetchPlatforms} from '../actions/fetchGames'
 import {addToBacklog} from '../actions/backlogActions'
 import {connect} from 'react-redux'
-import VideoGames from '../components/videoGames'
+import VideoGames from './videoGames'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 class Home extends Component {
@@ -22,7 +22,7 @@ class Home extends Component {
                     next={() => this.props.fetchMoreGames(this.props.next_page)}
                     hasMore={this.props.next_page}
                     >
-                    <VideoGames games={this.props.games} loading={this.props.loading} addToBacklog={this.props.addToBacklog} backlog={this.props.backlog}/>
+                    <VideoGames games={this.props.games} loading={this.props.loading} addToBacklog={this.props.addToBacklog} backlog={this.props.backlog} isLoggedIn={this.props.isLoggedIn}/>
                 </InfiniteScroll>
             </>
         )

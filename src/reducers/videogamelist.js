@@ -1,4 +1,5 @@
 const videoGameList = (state={
+    loggedIn: false,
     user:'',
     backlog:[],
     platforms:[],
