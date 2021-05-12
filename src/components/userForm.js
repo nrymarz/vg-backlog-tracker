@@ -7,10 +7,9 @@ function UserForm({submit, handleLogin}){
     const [userInfo, setUserInfo] = useState({username:'',password:''})
 
     const handleChange = event => {
-        let newInfo = Object.assign({},userInfo)
-        newInfo[event.target.name] = event.target.value
-        console.log(newInfo)
-        setUserInfo(newInfo)
+        setUserInfo(prevState => {
+            return {...prevState, [event.target.name]: event.target.value}
+        })
     }
 
     const handleSubmit = event =>{
