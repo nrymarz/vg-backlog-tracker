@@ -11,7 +11,6 @@ export default function VGCardFace({esrb_rating, rating, platforms, height, hand
     function renderPlatforms(){
         if(platforms) return <Card.Text> Platforms: {platforms.map(pf => pf.platform.name).join(', ')} </Card.Text>
     }
-        
     return(
         <Card.Body className="d-inline-flex flex-column justify-content-center"  style={{minHeight: height-2}}>
             {renderRating()}

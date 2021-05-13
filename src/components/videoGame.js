@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
@@ -10,13 +10,10 @@ function VideoGame({game, isBtnDisabled, backlog, addToBacklog}){
     const [isFlipped, setIsFlipped] = useState(false)
     const [btnDisabled, setBtnDisabled] = useState(isBtnDisabled)
 
-    let targetRef = React.createRef();
-    let height = null
-
     const handleClick = () =>{
-        height = targetRef.current.offsetHeight
         setIsFlipped(prevState => !prevState)
     }
+    const targetRef = useRef(null)
 
     const handleBtnClick = event =>{
         event.stopPropagation()
@@ -42,7 +39,7 @@ function VideoGame({game, isBtnDisabled, backlog, addToBacklog}){
                     esrb_rating={game.esrb_rating} 
                     platforms={game.platforms} 
                     rating={game.rating}
-                    height={height}
+                    height={targetRef.current.offsetHeight}
                     handleBtnClick={handleBtnClick}
                     btnDisabled={btnDisabled}
                 />
@@ -50,7 +47,6 @@ function VideoGame({game, isBtnDisabled, backlog, addToBacklog}){
         }
         return <VGCardFace game={game} />
     }
-
     return(
         <Col sm={4} lg={3} xl={2} className="my-3" ref={targetRef}>
             <Card text="light" onClick={handleClick} className= "h-100">
