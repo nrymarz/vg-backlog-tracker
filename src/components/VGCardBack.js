@@ -2,7 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
-export default function VGCardFace(esrb_rating, rating, platforms, height, handleBtnClick, btnDisabled){
+export default function VGCardFace({esrb_rating, rating, platforms, height, handleBtnClick, btnDisabled}){
 
     function renderRating(){
         if(esrb_rating) return <Card.Text>Rated: {esrb_rating.name}</Card.Text>
