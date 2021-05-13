@@ -1,71 +1,66 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
 import VGCardFace from './VGCardFace'
 import VGCardBack from './VGCardBack'
 
-class VideoGame extends Component{
-    
-    state={
-        isFlipped: false,
-        btnDisabled: this.props.btnDisabled
-    }
+function VideoGame({game, btnDisabled, backlog, addToBacklog}){
 
-    targetRef = React.createRef();
-    height = null
+    const [vgCard, setVgCard] = useState({isFlipped:false, btnDisabled: btnDisabled})
 
-    handleClick = () =>{
-        this.height = this.targetRef.current.offsetHeight
-        this.setState({
-            isFlipped: !this.state.isFlipped
+    let targetRef = React.createRef();
+    let height = null
+
+    const handleClick = () =>{
+        height = targetRef.current.offsetHeight
+        setVgCard(prevState =>{
+            return {...prevState, isFlipped: !this.state.isFlipped}
         })
     }
 
-    handleBtnClick = event =>{
+    const handleBtnClick = event =>{
         event.stopPropagation()
-        this.props.addToBacklog(this.props.game)
-        this.setState({
-            btnDisabled: true
+        addToBacklog(game)
+        setVgCard(prevState=>{
+            return {...prevState, btnDsiabled:true}
         })
         if(localStorage.getItem('jwt')){
-            this.props.game.status = "NOT_STARTED"
-            let backlog = [...this.props.backlog,this.props.game]
-            backlog = JSON.stringify(backlog.map(game =>{return {name:game.name,status:game.status,id:game.id}}))
+            game.status = "NOT_STARTED"
+            let backlogCopy = [...backlog,game]
+            backlogCopy = JSON.stringify(backlogCopy.map(game =>{return {name:game.name,status:game.status,id:game.id}}))
             const configObj={
                 method: "POST",
                 headers:{'Content-Type':'application/json','Authorization':`Bearer ${localStorage.getItem('jwt')}`},
-                body: JSON.stringify({user:{backlog: backlog}})
+                body: JSON.stringify({user:{backlog: backlogCopy}})
             }
             fetch('https://vg-backlog-tracker-api.herokuapp.com/update',configObj)
         }
     }
 
-    renderCard(){
-        if(this.state.isFlipped) {
+    function renderCard(){
+        if(vgCard.isFlipped) {
             return(
                 <VGCardBack 
-                    esrb_rating={this.props.game.esrb_rating} 
-                    platforms={this.props.game.platforms} 
-                    rating={this.props.game.rating}
-                    height={this.height}
-                    handleBtnClick={this.handleBtnClick}
-                    btnDisabled={this.state.btnDisabled}
+                    esrb_rating={game.esrb_rating} 
+                    platforms={game.platforms} 
+                    rating={game.rating}
+                    height={height}
+                    handleBtnClick={handleBtnClick}
+                    btnDisabled={vgCard.btnDisabled}
                 />
             )
         }
-        return <VGCardFace game={this.props.game} />
+        return <VGCardFace game={game} />
     }
 
-    render(){
-        return(
-            <Col sm={4} lg={3} xl={2} className="my-3" ref={this.targetRef}>
-                <Card text="light" onClick={this.handleClick} className= "h-100">
-                    {this.renderCard()}
-                </Card>
-            </Col>
-        )
-    }   
+    return(
+        <Col sm={4} lg={3} xl={2} className="my-3" ref={targetRef}>
+            <Card text="light" onClick={handleClick} className= "h-100">
+                {renderCard()}
+            </Card>
+        </Col>
+    )   
 }
 
 export default VideoGame
