@@ -5,26 +5,23 @@ import Col from 'react-bootstrap/Col'
 import VGCardFace from './VGCardFace'
 import VGCardBack from './VGCardBack'
 
-function VideoGame({game, btnDisabled, backlog, addToBacklog}){
+function VideoGame({game, isBtnDisabled, backlog, addToBacklog}){
 
-    const [vgCard, setVgCard] = useState({isFlipped:false, btnDisabled})
+    const [isFlipped, setIsFlipped] = useState(false)
+    const [btnDisabled, setBtnDisabled] = useState(isBtnDisabled)
 
     let targetRef = React.createRef();
     let height = null
 
     const handleClick = () =>{
         height = targetRef.current.offsetHeight
-        setVgCard(prevState =>{
-            return {...prevState, isFlipped: !prevState.isFlipped}
-        })
+        setIsFlipped(prevState => !prevState)
     }
 
     const handleBtnClick = event =>{
         event.stopPropagation()
         addToBacklog(game)
-        setVgCard(prevState=>{
-            return {...prevState, btnDisabled:true}
-        })
+        setBtnDisabled(true)
         if(localStorage.getItem('jwt')){
             game.status = "NOT_STARTED"
             let backlogCopy = [...backlog,game]
@@ -39,7 +36,7 @@ function VideoGame({game, btnDisabled, backlog, addToBacklog}){
     }
 
     function renderCard(){
-        if(vgCard.isFlipped) {
+        if(isFlipped) {
             return(
                 <VGCardBack 
                     esrb_rating={game.esrb_rating} 
@@ -47,7 +44,7 @@ function VideoGame({game, btnDisabled, backlog, addToBacklog}){
                     rating={game.rating}
                     height={height}
                     handleBtnClick={handleBtnClick}
-                    btnDisabled={vgCard.btnDisabled}
+                    btnDisabled={btnDisabled}
                 />
             )
         }
