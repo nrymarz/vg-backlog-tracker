@@ -7,7 +7,7 @@ import VGCardBack from './VGCardBack'
 
 function VideoGame({game, btnDisabled, backlog, addToBacklog}){
 
-    const [vgCard, setVgCard] = useState({isFlipped:false, btnDisabled: btnDisabled})
+    const [vgCard, setVgCard] = useState({isFlipped:false, btnDisabled})
 
     let targetRef = React.createRef();
     let height = null
@@ -15,7 +15,7 @@ function VideoGame({game, btnDisabled, backlog, addToBacklog}){
     const handleClick = () =>{
         height = targetRef.current.offsetHeight
         setVgCard(prevState =>{
-            return {...prevState, isFlipped: !this.state.isFlipped}
+            return {...prevState, isFlipped: !prevState.isFlipped}
         })
     }
 
@@ -23,7 +23,7 @@ function VideoGame({game, btnDisabled, backlog, addToBacklog}){
         event.stopPropagation()
         addToBacklog(game)
         setVgCard(prevState=>{
-            return {...prevState, btnDsiabled:true}
+            return {...prevState, btnDisabled:true}
         })
         if(localStorage.getItem('jwt')){
             game.status = "NOT_STARTED"
