@@ -45,11 +45,12 @@ class VideoGame extends Component{
         if(this.state.isFlipped) {
             return(
                 <VGCardBack 
-                esrb_rating={this.props.game.esrb_rating} 
-                platforms={this.props.game.platforms} 
-                rating={this.props.game.rating}
-                height={this.height}
-                handleBtnClick={this.handleBtnClick}
+                    esrb_rating={this.props.game.esrb_rating} 
+                    platforms={this.props.game.platforms} 
+                    rating={this.props.game.rating}
+                    height={this.height}
+                    handleBtnClick={this.handleBtnClick}
+                    btnDisabled={this.state.btnDisabled}
                 />
             )
         }
@@ -59,11 +60,7 @@ class VideoGame extends Component{
     render(){
         return(
             <Col sm={4} lg={3} xl={2} className="my-3" ref={this.targetRef}>
-                <Card 
-                    text="light"
-                    onClick={this.handleClick}
-                    className= "h-100"
-                    >
+                <Card text="light" onClick={this.handleClick} className= "h-100">
                     {this.renderCard()}
                 </Card>
             </Col>
