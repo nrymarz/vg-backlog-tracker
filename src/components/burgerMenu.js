@@ -11,7 +11,7 @@ export default function BurgerMenu({changeMenu}){
     return(
         <div className="burger-menu" onClick={handleClick}>
             <div style={{transform: open ? "rotate(45deg) translate(10px, 10px)" : "translateX(0px)"}}/>
-            <div style={{background: open ? "transparent" : "white"}}/>
+            <div style={{background: open ? "transparent" : "white", transform: open ? "translateX(-30px)" : ""}}/>
             <div style={{transform: open ? "rotate(-45deg) translate(8px, -10px)" : "translateX(0px)"}}/>
         </div>
     )

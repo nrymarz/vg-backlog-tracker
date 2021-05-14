@@ -27,7 +27,8 @@ body {
 .phone-nav{
     display:none;
     user-select:none;
-    background-color:rgba(62, 80, 247, 0.356) ;
+    background-color:rgba(62, 80, 247, 0.356);
+    transition: all 1s ease;
 }
 
 .phone-show{
@@ -51,6 +52,7 @@ body {
     border-radius:5px;
     margin-top:auto;
     margin-bottom:auto;
+    transition: all .5s ease-in-out;
 }
 
 .hideable-phone{
