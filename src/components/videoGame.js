@@ -10,10 +10,11 @@ function VideoGame({game, isBtnDisabled, backlog, addToBacklog}){
     const [isFlipped, setIsFlipped] = useState(false)
     const [btnDisabled, setBtnDisabled] = useState(isBtnDisabled)
 
+    const targetRef = useRef(null)
+
     const handleClick = () =>{
         setIsFlipped(prevState => !prevState)
     }
-    const targetRef = useRef(null)
 
     const handleBtnClick = event =>{
         event.stopPropagation()

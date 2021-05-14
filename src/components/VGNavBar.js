@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
+import BurgerMenu from './burgerMenu'
 import {Link} from 'react-router-dom'
 
 export default function VGNavBar({user}){
@@ -25,6 +26,7 @@ export default function VGNavBar({user}){
             <Nav className="ml-auto mr-3">
                 {renderUser()}
                 <Nav.Link href="https://rawg.io">Rawg.io</Nav.Link>
+                <BurgerMenu/>
             </Nav>
         </Navbar>
     )

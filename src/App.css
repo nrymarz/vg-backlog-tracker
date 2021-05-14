@@ -23,3 +23,20 @@ body {
 .navbar{
     background-color:rgba(170, 178, 252, 0.356) ;
 }
+
+.burger-menu{
+    height:2.4rem;
+    width: 50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.burger-menu div{
+    width: 40px;
+    height:6px;
+    background:white;
+    border-radius:5px;
+    margin-top:auto;
+    margin-bottom:auto;
+}
