@@ -19,8 +19,8 @@ export default function VGNavBar({user}){
     }
 
     function changeMenu(open){
-        if(open) targetRef.current.style.display="flex"
-        else targetRef.current.style.display="none"
+        if(open) targetRef.current.className += " phone-show"
+        else targetRef.current.classList.remove('phone-show')
     }
     
     return(
