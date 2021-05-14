@@ -9,7 +9,7 @@ export default function BurgerMenu({changeMenu, menu}){
     }
 
     return(
-        <div className="burger-menu" onClick={handleClick} style={{background: open ? "white" : "grey"}}>
+        <div className="burger-menu" onClick={handleClick}>
             <div />
             <div />
             <div />

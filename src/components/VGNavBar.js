@@ -19,23 +19,34 @@ export default function VGNavBar({user}){
     }
 
     function changeMenu(open){
-        if(open) targetRef.current.style.display="none"
-        else targetRef.current.style.display="flex"
+        console.log(targetRef.current)
+        console.log(open)
+        if(open) targetRef.current.style.display="flex"
+        else targetRef.current.style.display="none"
     }
     
     return(
-        <Navbar variant='dark'>
-            <Navbar.Brand>VG Backlog Tracker</Navbar.Brand>
-            <Nav defaultActiveKey="/" ref={targetRef}>
-                <Nav.Link as={Link} to="/">Search</Nav.Link>
-                <Nav.Link as={Link} to="/backlog">Backlog</Nav.Link>
-                {renderLogin()}
-            </Nav>
-            <Nav className="ml-auto mr-3">
-                {renderUser()}
-                <Nav.Link href="https://rawg.io">Rawg.io</Nav.Link>
-                <BurgerMenu changeMenu={changeMenu}/>
-            </Nav>
-        </Navbar>
+        <>
+            <Navbar variant='dark'>
+                <Navbar.Brand>VG Backlog Tracker</Navbar.Brand>
+                <Nav defaultActiveKey="/" className="hideable-phone">
+                    <Nav.Link as={Link} to="/">Search</Nav.Link>
+                    <Nav.Link as={Link} to="/backlog">Backlog</Nav.Link>
+                    {renderLogin()}
+                </Nav>
+                <Nav className="ml-auto mr-3">
+                    {renderUser()}
+                    <Nav.Link href="https://rawg.io">Rawg.io</Nav.Link>
+                    <BurgerMenu changeMenu={changeMenu}/>
+                </Nav>
+            </Navbar>
+            <Navbar variant='dark' className="phone-nav" ref={targetRef}>
+                <Nav defaultActiveKey="/" className="d-flex flex-column">
+                    <Nav.Link as={Link} to="/">Search</Nav.Link>
+                    <Nav.Link as={Link} to="/backlog">Backlog</Nav.Link>
+                    {renderLogin()}
+                </Nav>
+            </Navbar>
+        </>
     )
 }
