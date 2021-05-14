@@ -19,8 +19,6 @@ export default function VGNavBar({user}){
     }
 
     function changeMenu(open){
-        console.log(targetRef.current)
-        console.log(open)
         if(open) targetRef.current.style.display="flex"
         else targetRef.current.style.display="none"
     }
