@@ -24,6 +24,10 @@ body {
     background-color:rgba(170, 178, 252, 0.356) ;
 }
 
+.hide{
+    display:none;
+}
+
 .burger-menu{
     height:2.4rem;
     width: 50px;
