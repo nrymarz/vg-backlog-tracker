@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 
-export default function BurgerMenu({changeMenu, menu}){
+export default function BurgerMenu({changeMenu}){
     const [open, setOpen] = useState(false)
 
     const handleClick = e =>{
@@ -10,9 +10,9 @@ export default function BurgerMenu({changeMenu, menu}){
 
     return(
         <div className="burger-menu" onClick={handleClick}>
-            <div />
-            <div />
-            <div />
+            <div style={{transform: open ? "rotate(45deg) translate(10px, 10px)" : "translateX(0px)"}}/>
+            <div style={{background: open ? "transparent" : "white"}}/>
+            <div style={{transform: open ? "rotate(-45deg) translate(8px, -10px)" : "translateX(0px)"}}/>
         </div>
     )
 }

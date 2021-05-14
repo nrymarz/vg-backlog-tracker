@@ -19,7 +19,7 @@ export default function VGNavBar({user}){
     }
 
     function changeMenu(open){
-        if(open) targetRef.current.className += " phone-show"
+        if(!open) targetRef.current.className += " phone-show"
         else targetRef.current.classList.remove('phone-show')
     }
     
