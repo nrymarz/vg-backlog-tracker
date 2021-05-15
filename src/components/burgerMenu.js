@@ -5,7 +5,7 @@ export default function BurgerMenu({changeMenu}){
 
     const handleClick = e =>{
         setOpen(!open)
-        changeMenu(open)
+        changeMenu(!open)
     }
 
     return(

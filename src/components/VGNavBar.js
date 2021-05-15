@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useState} from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import BurgerMenu from './burgerMenu'
@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom'
 
 export default function VGNavBar({user}){
 
-    const targetRef = useRef(null)
+    const [showPhoneNav, setShowPhoneNav] = useState(false)
 
     function renderUser(){
         if(user.length > 0) return <Navbar.Text className="mx-3">Logged In as {user}</Navbar.Text>
@@ -17,12 +17,6 @@ export default function VGNavBar({user}){
     function renderLogin(){
         if(user.length > 0) return <Nav.Link as={Link} to='/logout'>Log Out</Nav.Link>
         return <Nav.Link as={Link} to='/login'>Log In</Nav.Link>
-    }
-
-    function changeMenu(open){
-        console.log(targetRef)
-        //if(!open) targetRef.current.className += " phone-show"
-        //else targetRef.current.classList.remove('phone-show')
     }
     
     return(
@@ -38,9 +32,9 @@ export default function VGNavBar({user}){
                     {renderUser()}
                     <Nav.Link href="https://rawg.io">Rawg.io</Nav.Link>
                 </Nav>
-                <BurgerMenu changeMenu={changeMenu}/>
+                <BurgerMenu changeMenu={setShowPhoneNav}/>
             </Navbar>
-            <PhoneNav renderUser={renderUser} renderLogin={renderLogin}/>
+            <PhoneNav renderUser={renderUser} renderLogin={renderLogin} show={showPhoneNav}/>
         </>
     )
 }

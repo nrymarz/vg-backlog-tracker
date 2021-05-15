@@ -3,10 +3,10 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import {Link} from 'react-router-dom'
 
-export default function PhoneNav({renderLogin, renderUser}){
+export default function PhoneNav({renderLogin, renderUser, show}){
     
     return(
-        <Navbar variant='dark' className="phone-nav">
+        <Navbar variant='dark' className={`phone-nav ${show ? "phone-show" : ""}`}>
             <Nav defaultActiveKey="/" className="d-flex flex-column">
                 <Nav.Link as={Link} to="/">Search</Nav.Link>
                 <Nav.Link as={Link} to="/backlog">Backlog</Nav.Link>
