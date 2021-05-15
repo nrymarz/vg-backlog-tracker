@@ -2,6 +2,7 @@ import React, {useRef} from 'react'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import BurgerMenu from './burgerMenu'
+import PhoneNav from './phoneNav'
 import {Link} from 'react-router-dom'
 
 
@@ -19,8 +20,9 @@ export default function VGNavBar({user}){
     }
 
     function changeMenu(open){
-        if(!open) targetRef.current.className += " phone-show"
-        else targetRef.current.classList.remove('phone-show')
+        console.log(targetRef)
+        //if(!open) targetRef.current.className += " phone-show"
+        //else targetRef.current.classList.remove('phone-show')
     }
     
     return(
@@ -38,15 +40,7 @@ export default function VGNavBar({user}){
                 </Nav>
                 <BurgerMenu changeMenu={changeMenu}/>
             </Navbar>
-            <Navbar variant='dark' className="phone-nav" ref={targetRef}>
-                <Nav defaultActiveKey="/" className="d-flex flex-column">
-                    <Nav.Link as={Link} to="/">Search</Nav.Link>
-                    <Nav.Link as={Link} to="/backlog">Backlog</Nav.Link>
-                    {renderUser()}
-                    {renderLogin()}
-                    <Nav.Link href="https://rawg.io">Rawg.io</Nav.Link>
-                </Nav>
-            </Navbar>
+            <PhoneNav renderUser={renderUser} renderLogin={renderLogin}/>
         </>
     )
 }
