@@ -21,17 +21,19 @@ body {
 }
 
 .navbar{
-    background-color:rgba(170, 178, 252, 0.356) ;
+    z-index:1;
+    background-color:rgba(170, 178, 252, 0.356);
+    opacity:100%;
 }
 
 .phone-nav{
+    z-index:0;
     display:none;
     user-select:none;
     background-color:rgba(62, 80, 247, 0.356);
-    transition: all 1s ease;
 }
 
-.phone-show{
+.phone-show, .phone-hide{
     display:none;
 }
 
@@ -68,8 +70,8 @@ body {
         display:flex;
     }
 
-    .phone-show{
-        display:flex;
-    }
+   .phone-nav{
+       display:flex;
+   }
 
 }

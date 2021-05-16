@@ -29,8 +29,8 @@ export default function SearchForm({genres, platforms, fetchGames}) {
 
     return(
         <Form onSubmit={handleSubmit}>
-            <Form.Row className="px-4 my-3">
-                <Col xs={6}>
+            <Form.Row className="px-3 mt-3">
+                <Col xs={5}>
                     <Form.Control type="text" value={query.search} name="search" onChange={handleChange} placeholder="Search by title"/>
                 </Col>
                 <Col>
@@ -45,7 +45,7 @@ export default function SearchForm({genres, platforms, fetchGames}) {
                         {renderPlatformOptions()}
                     </Form.Control>
                 </Col>
-                <Col xs={1}>
+                <Col xs={3}>
                     <Button variant="primary" type="submit" block>Search</Button>
                 </Col>
             </Form.Row>
