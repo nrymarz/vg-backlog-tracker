@@ -31,8 +31,8 @@ export default function VGNavBar({user}){
                     {renderUser()}
                     <Nav.Link href="https://rawg.io">Rawg.io</Nav.Link>
                 </Nav>
-                <BurgerMenu eventKey="0" />
             </Navbar>
+            <BurgerMenu eventKey="0" />
             <PhoneNav renderUser={renderUser} renderLogin={renderLogin}/>
         </Accordian>
     )

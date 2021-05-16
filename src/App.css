@@ -21,19 +21,12 @@ body {
 }
 
 .navbar{
-    z-index:1;
     background-color:rgba(170, 178, 252, 0.356);
-    opacity:100%;
 }
 
 .phone-nav{
-    z-index:0;
-    display:none;
-    user-select:none;
     background-color:rgba(62, 80, 247, 0.356);
-}
-
-.phone-show, .phone-hide{
+    user-select: none;
     display:none;
 }
 
@@ -43,8 +36,9 @@ body {
     display:none;
     flex-direction:column;
     justify-content:center;
-    margin-left:auto;
-
+    position:absolute;
+    right:0;
+    top:8px;
 }
 
 .burger-menu div{
@@ -70,8 +64,7 @@ body {
         display:flex;
     }
 
-   .phone-nav{
-       display:flex;
-   }
-
+    .phone-nav{
+        display:flex;
+    }
 }
