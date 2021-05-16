@@ -20,7 +20,7 @@ class VideoGames extends Component {
         }
     }
     renderGames(){
-        if(this.props.loading) return <> <Spinner animation="border" variant="primary"/> Finding Games... </>
+        if(this.props.loading) return <div className="loader"> <Spinner animation="border" variant="primary"/> Finding Games... </div>
         else if(this.props.games.length===0) return <h4>No games found.</h4>
         return(
             <CardGroup>

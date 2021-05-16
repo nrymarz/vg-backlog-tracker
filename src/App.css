@@ -20,6 +20,10 @@ body {
     transform: scale(1.05);
 }
 
+.loader{
+    margin-top:15px;
+}
+
 .navbar{
     background-color:rgba(170, 178, 252, 0.356);
 }

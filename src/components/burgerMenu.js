@@ -3,7 +3,7 @@ import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 
 export default function BurgerMenu({eventKey}){
     const [open, setOpen] = useState(false)
-    const toggle = useAccordionToggle(eventKey, setOpen)
+    const toggle = useAccordionToggle(eventKey, () => setOpen(!open))
 
     return(
         <div className="burger-menu" onClick={toggle}>
