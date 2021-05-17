@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import {addToBacklog, removeFromBacklog} from '../actions/backlogActions'
 import {connect} from 'react-redux'
 import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
+import Container from 'react-bootstrap/Container'
 import BacklogList from '../components/backlogList'
 
 class Backlog extends Component {
@@ -49,7 +49,7 @@ class Backlog extends Component {
 
     render(){
         return(
-            <Row className="text-center">
+            <Container fluid className="text-center d-flex">
                  <Col xs={4} >
                     <h2>Backlog:</h2>
                     <BacklogList games={this.state.NOT_STARTED} variant="danger" handleSelect={this.handleSelect} handleRemove={this.handleRemove}/>
@@ -64,7 +64,7 @@ class Backlog extends Component {
                     <h2>Completed:</h2>
                     <BacklogList games={this.state.COMPLETED} variant="success" handleSelect={this.handleSelect} handleRemove={this.handleRemove}/>
                 </Col>
-            </Row>
+            </Container>
         )
     }
 }
